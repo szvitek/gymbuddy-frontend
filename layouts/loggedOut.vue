@@ -1,32 +1,5 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand to="/home">🏋🏻‍♂️ GymBuddy</b-navbar-brand>
-
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
-          <b-nav-item to="/exercises">Exercises</b-nav-item>
-          <b-nav-item to="/workouts">Workouts</b-nav-item>
-          <b-nav-item to="/" disabled>Stats</b-nav-item>
-        </b-navbar-nav>
-
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown right>
-            <!-- Using 'button-content' slot -->
-            <template v-slot:button-content>
-              <em>User</em>
-            </template>
-            <b-dropdown-item to="/profile">Profile</b-dropdown-item>
-            <b-dropdown-item @click.prevent="logout()">
-              Sign Out
-            </b-dropdown-item>
-          </b-nav-item-dropdown>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
     <nuxt />
   </div>
 </template>
@@ -37,7 +10,6 @@ export default {
     logout() {
       // eslint-disable-next-line no-console
       console.log('logout clicked')
-      this.$router.push('/')
     }
   }
 }

@@ -1,0 +1,11 @@
+# Roadmap
+- [x] generate a project, get familiar with the framework
+- [x] placeholders added for different pages/sections
+- [ ] setup vuex
+- [ ] working login / registration
+- [ ] profile page
+- [ ] exercises CRUD
+- [ ] workouts CRUD
+- [ ] stats / analytics
+- [ ] home page
+- [ ] pwa

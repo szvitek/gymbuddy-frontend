@@ -1,33 +1,34 @@
 <template>
-  <div>
-    landing page, display login/register here
-    <b-button @click="login">
-      Sign In
-    </b-button>
-    <b-button v-b-modal.modal-register>Sign Up</b-button>
-
-    <b-modal
-      id="modal-register"
-      title="Sign Up"
-      ok-title="Sign Up"
-      @ok="register"
-    >
-      <p class="my-4">display registration form here!</p>
-    </b-modal>
-  </div>
+  <section class="container">
+    <div>
+      <logo />
+      <h1 class="title">
+        gymbuddy-frontend
+      </h1>
+      <h2 class="subtitle">
+        My good Nuxt.js project
+      </h2>
+      <div class="links">
+        <a href="https://nuxtjs.org/" target="_blank" class="button--green"
+          >Documentation</a
+        >
+        <a
+          href="https://github.com/nuxt/nuxt.js"
+          target="_blank"
+          class="button--grey"
+          >GitHub</a
+        >
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
+import Logo from '~/components/Logo.vue'
+
 export default {
-  layout: 'loggedOut',
-  components: {},
-  methods: {
-    login() {
-      this.$router.push('/home')
-    },
-    register() {
-      this.$router.push('/home')
-    }
+  components: {
+    Logo
   }
 }
 </script>

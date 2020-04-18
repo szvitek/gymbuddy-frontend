@@ -1,6 +1,7 @@
 # gymbuddy-frontend
 
 > My good Nuxt.js project
+This is my Easter hackathon project, a gym tracker application. This is my first app in Nuxt.js. work in progress.
 
 ## Build Setup
 
