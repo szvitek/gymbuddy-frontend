@@ -1,8 +1,8 @@
 # Roadmap
 - [x] generate a project, get familiar with the framework
 - [x] placeholders added for different pages/sections
-- [ ] setup vuex
-- [ ] working login / registration
+- [x] setup vuex
+- [x] working login / registration (WIP - but got the basics)
 - [ ] profile page
 - [ ] exercises CRUD
 - [ ] workouts CRUD

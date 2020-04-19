@@ -17,10 +17,10 @@
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template v-slot:button-content>
-              <em>User</em>
+              <em>{{ user ? user.name : 'user' }}</em>
             </template>
             <b-dropdown-item to="/profile">Profile</b-dropdown-item>
-            <b-dropdown-item @click.prevent="logout()">
+            <b-dropdown-item @click.prevent="onLogout()">
               Sign Out
             </b-dropdown-item>
           </b-nav-item-dropdown>
@@ -32,11 +32,22 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
+  computed: {
+    ...mapGetters({
+      user: 'user'
+    })
+  },
   methods: {
-    logout() {
+    ...mapActions({
+      logout: 'logout'
+    }),
+    onLogout() {
       // eslint-disable-next-line no-console
       console.log('logout clicked')
+      this.logout()
       this.$router.push('/')
     }
   }
