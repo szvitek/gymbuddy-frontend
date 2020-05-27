@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand to="/home">🏋🏻‍♂️ GymBuddy</b-navbar-brand>
+      <b-navbar-brand to="/">🏋🏻‍♂️ GymBuddy</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -37,18 +37,27 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters({
-      user: 'user'
+      token: 'user/token',
+      user: 'user/user'
     })
+  },
+  middleware: 'auth',
+  async created() {
+    if (!this.user) {
+      // todo: try/catch error toast
+      await this.getMe()
+    }
   },
   methods: {
     ...mapActions({
-      logout: 'logout'
+      logout: 'user/logout',
+      getMe: 'user/getMe'
     }),
     onLogout() {
       // eslint-disable-next-line no-console
       console.log('logout clicked')
       this.logout()
-      this.$router.push('/')
+      this.$router.push('/login')
     }
   }
 }
