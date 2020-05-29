@@ -33,6 +33,8 @@
     </b-form>
     <b-img class="mt-3" src="@/assets/images/logo.jpg" />
 
+    <notifications position="right top" />
+
     <b-modal
       id="modal-registration"
       @ok="onRegister"
@@ -141,22 +143,15 @@ export default {
         await this.login(this.loginModel)
         this.$router.push('/')
       } catch (err) {
-        // eslint-disable-next-line no-console
-        console.log('e', err)
-        // todo: toast!
+        this.$notify({ type: 'error', text: err.message })
       }
     },
     async onRegister() {
-      // eslint-disable-next-line no-console
-      console.log('register clicked')
       try {
         await this.register(this.registrationModel)
         this.$router.push('/')
       } catch (err) {
-        // eslint-disable-next-line no-console
-        console.log(err)
-        // todo: toast!
-        // todo: don't close the modal if err
+        this.$notify({ type: 'error', text: err.message })
       }
     }
   }

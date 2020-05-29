@@ -19,6 +19,7 @@
           >GitHub</a
         >
       </div>
+      <b-btn @click="showToast">toast</b-btn>
     </div>
   </section>
 </template>
@@ -29,6 +30,14 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  methods: {
+    showToast() {
+      this.$notify({
+        type: 'error',
+        text: 'test'
+      })
+    }
   }
 }
 </script>

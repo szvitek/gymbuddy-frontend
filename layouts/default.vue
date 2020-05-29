@@ -27,6 +27,11 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+    <notifications
+      :duration="-3000"
+      class="vue-notification-custom"
+      position="right top"
+    />
     <nuxt />
   </div>
 </template>
@@ -44,8 +49,11 @@ export default {
   middleware: 'auth',
   async created() {
     if (!this.user) {
-      // todo: try/catch error toast
-      await this.getMe()
+      try {
+        await this.getMe()
+      } catch (err) {
+        this.$notify({ type: 'error', text: err.message })
+      }
     }
   },
   methods: {

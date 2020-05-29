@@ -44,7 +44,11 @@ export default {
   async created() {
     // await this.fetchExercises()
     // looks like for some reason mapActions not really working with nuxt, but this syntax does:
-    await this.$store.dispatch('exercises/fetchExercises')
+    try {
+      await this.$store.dispatch('exercises/fetchExercises')
+    } catch (err) {
+      this.$notify({ type: 'error', text: err.message })
+    }
   }
 }
 </script>
