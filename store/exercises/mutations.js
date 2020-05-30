@@ -1,4 +1,8 @@
 export default {
+  SET_GROUPS(state, groups) {
+    state.groups = groups
+  },
+
   SET_EXERCISES(state, { exercises }) {
     state.exercises = exercises
   },

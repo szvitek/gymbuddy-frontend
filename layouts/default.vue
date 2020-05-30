@@ -7,6 +7,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
+          <b-nav-item to="/categories">Categories</b-nav-item>
           <b-nav-item to="/exercises">Exercises</b-nav-item>
           <b-nav-item to="/workouts">Workouts</b-nav-item>
           <b-nav-item to="/" disabled>Stats</b-nav-item>
@@ -27,11 +28,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <notifications
-      :duration="-3000"
-      class="vue-notification-custom"
-      position="right top"
-    />
+    <notifications class="vue-notification-custom" position="right top" />
     <nuxt />
   </div>
 </template>
@@ -48,22 +45,22 @@ export default {
   },
   middleware: 'auth',
   async created() {
-    if (!this.user) {
-      try {
+    try {
+      await this.getGroups()
+      if (!this.user) {
         await this.getMe()
-      } catch (err) {
-        this.$notify({ type: 'error', text: err.message })
       }
+    } catch (err) {
+      this.$notify({ type: 'error', text: err.message })
     }
   },
   methods: {
     ...mapActions({
       logout: 'user/logout',
-      getMe: 'user/getMe'
+      getMe: 'user/getMe',
+      getGroups: 'exercises/getGroups'
     }),
     onLogout() {
-      // eslint-disable-next-line no-console
-      console.log('logout clicked')
       this.logout()
       this.$router.push('/login')
     }

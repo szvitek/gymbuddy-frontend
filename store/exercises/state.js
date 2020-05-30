@@ -1,15 +1,5 @@
 export default () => ({
-  groups: [
-    'abs',
-    'back',
-    'biceps',
-    'chest',
-    'core',
-    'general',
-    'legs',
-    'shoulders',
-    'triceps'
-  ],
+  groups: [],
   exercise: {},
   exercises: []
 })

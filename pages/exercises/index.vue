@@ -1,28 +1,30 @@
 <template>
+  <!-- 
+  display muscle group and categories cards at the top
+  display exercises in a table 
+-->
   <div>
-    <ul>
-      <li v-for="(exercises, group) in filteredExercises">
-        {{ group }}
-        <ul>
-          <li v-for="ex in exercises">
-            <span
-              @click.prevent="
-                $store.dispatch('exercises/fetchExercise', ex._id)
-              "
-            >
-              {{ ex.name }}
-            </span>
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <b-list-group horizontal>
+      <b-list-group-item active>All</b-list-group-item>
+      <b-list-group-item v-for="group in groups" :key="group">{{
+        group
+      }}</b-list-group-item>
+    </b-list-group>
+
+    <b-btn @click="$router.push('/exercises/new')">NEW</b-btn>
+    <b-table :items="exercises" striped hover></b-table>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
+  data() {
+    return {
+      selectedGroup: 'All'
+    }
+  },
   computed: {
     ...mapGetters({
       groups: 'exercises/groups',
@@ -36,16 +38,11 @@ export default {
       }, {})
     }
   },
-  actions: {
-    ...mapActions({
-      fetchExercises: 'exercises/fetchExercises'
-    })
-  },
+  actions: {},
   async created() {
-    // await this.fetchExercises()
-    // looks like for some reason mapActions not really working with nuxt, but this syntax does:
     try {
-      await this.$store.dispatch('exercises/fetchExercises')
+      // await this.getExercises()
+      await this.$store.dispatch('exercises/getExercises')
     } catch (err) {
       this.$notify({ type: 'error', text: err.message })
     }

@@ -49,6 +49,16 @@ export default {
     baseURL: process.env.API_BASE
   },
 
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'categories-edit',
+        path: '/categories/:id',
+        component: resolve(__dirname, 'pages/categories/new.vue')
+      })
+    }
+  },
+
   /*
    ** Build configuration
    */
