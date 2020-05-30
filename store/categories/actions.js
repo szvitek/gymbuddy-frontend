@@ -15,11 +15,25 @@ export default {
     commit('SET_CATEGORIES', categories)
   },
 
-  async create({ dispatch, rootGetters }, data) {
+  async create({ rootGetters }, data) {
     const token = rootGetters['user/token']
     await this.$axios.$post('/categories', data, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    await dispatch('getCategories')
+  },
+
+  async update({ rootGetters }, data) {
+    const token = rootGetters['user/token']
+    const { _id } = data
+    await this.$axios.$patch(`/categories/${_id}`, data, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  },
+
+  async delete({ rootGetters }, id) {
+    const token = rootGetters['user/token']
+    await this.$axios.$delete(`/categories/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
   }
 }

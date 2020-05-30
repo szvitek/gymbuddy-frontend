@@ -29,7 +29,9 @@
       </b-collapse>
     </b-navbar>
     <notifications class="vue-notification-custom" position="right top" />
-    <nuxt />
+    <div class="m-3">
+      <nuxt />
+    </div>
   </div>
 </template>
 
@@ -37,6 +39,7 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
+  name: 'DefaultLayout',
   computed: {
     ...mapGetters({
       token: 'user/token',

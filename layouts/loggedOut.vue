@@ -4,17 +4,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  methods: {
-    logout() {
-      // eslint-disable-next-line no-console
-      console.log('logout clicked')
-    }
-  }
-}
-</script>
-
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
