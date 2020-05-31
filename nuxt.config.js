@@ -24,12 +24,12 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['~/css/main.css'],
+  css: ['~/css/main.css', 'vue-multiselect/dist/vue-multiselect.min.css'],
 
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/vue-notifications'],
+  plugins: ['~/plugins/vue-notifications', '~/plugins/vue-multiselect'],
 
   /*
    ** Nuxt.js modules

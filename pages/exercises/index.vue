@@ -4,6 +4,11 @@
   display exercises in a table 
 -->
   <div>
+    <page-header title="Exercises">
+      <b-btn @click="$router.push('/exercises/new')" variant="primary">
+        NEW
+      </b-btn>
+    </page-header>
     <b-list-group horizontal>
       <b-list-group-item active>All</b-list-group-item>
       <b-list-group-item v-for="group in groups" :key="group">{{
@@ -11,15 +16,17 @@
       }}</b-list-group-item>
     </b-list-group>
 
-    <b-btn @click="$router.push('/exercises/new')">NEW</b-btn>
-    <b-table :items="exercises" striped hover></b-table>
+    <b-table :items="exercises" @row-clicked="onRowClick" striped hover />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import PageHeader from '@/components/layout/PageHeader'
 
 export default {
+  name: 'ExerciseList',
+  components: { PageHeader },
   data() {
     return {
       selectedGroup: 'All'
@@ -38,13 +45,17 @@ export default {
       }, {})
     }
   },
-  actions: {},
   async created() {
     try {
       // await this.getExercises()
       await this.$store.dispatch('exercises/getExercises')
     } catch (err) {
       this.$notify({ type: 'error', text: err.message })
+    }
+  },
+  methods: {
+    onRowClick(ex) {
+      this.$router.push(`/exercises/${ex._id}`)
     }
   }
 }

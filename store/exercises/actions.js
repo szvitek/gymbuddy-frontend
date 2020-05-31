@@ -7,6 +7,14 @@ export default {
     commit('SET_GROUPS', groups)
   },
 
+  async getExercise({ commit, rootGetters }, id) {
+    const token = rootGetters['user/token']
+    const exercise = await this.$axios.$get(`/exercises/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    commit('SET_EXERCISE', exercise)
+  },
+
   async getExercises({ commit, rootGetters }) {
     const token = rootGetters['user/token']
     const exercises = await this.$axios.$get(`/exercises`, {
@@ -15,16 +23,24 @@ export default {
     commit('SET_EXERCISES', { exercises })
   },
 
-  async create({ dispatch, rootGetters }, data) {
+  async create({ rootGetters }, data) {
     const token = rootGetters['user/token']
     await this.$axios.$post(`/exercises`, data, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    dispatch('getExercises')
-  }
+  },
 
-  // async fetchExercise({ commit }, id) {
-  //   const { data: exercise } = await this.$axios.get(`${url}/${id}`)
-  //   commit('SET_EXERCISE', exercise)
-  // }
+  async update({ rootGetters }, data) {
+    const token = rootGetters['user/token']
+    await this.$axios.$patch(`/exercises/${data._id}`, data, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  },
+
+  async delete({ rootGetters }, id) {
+    const token = rootGetters['user/token']
+    await this.$axios.$delete(`/exercises/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  }
 }

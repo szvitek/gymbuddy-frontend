@@ -1,5 +1,5 @@
 export default () => ({
   groups: [],
-  exercise: {},
+  exercise: null,
   exercises: []
 })
