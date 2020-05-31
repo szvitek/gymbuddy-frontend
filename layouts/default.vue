@@ -49,10 +49,9 @@ export default {
   middleware: 'auth',
   async created() {
     try {
+      this.$axios.setToken(this.token, 'Bearer')
       await this.getGroups()
-      if (!this.user) {
-        await this.getMe()
-      }
+      await this.getMe()
     } catch (err) {
       this.$notify({ type: 'error', text: err.message })
     }

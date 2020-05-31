@@ -21,11 +21,8 @@ export default {
     localStorage.removeItem('gymbuddy-token')
   },
 
-  async getMe({ commit, getters }) {
-    const token = getters.token
-    const user = await this.$axios.$get('/users/me', {
-      headers: { Authorization: `Bearer ${token}` }
-    })
+  async getMe({ commit }) {
+    const user = await this.$axios.$get('/users/me')
     commit('SET_USER', user)
   }
 }

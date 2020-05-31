@@ -8,9 +8,9 @@
 - [x] need to check if token is expired (not for now. rely on api validation)
 - [x] categories CRUP (add upload image functionality when it's ready on api side)
 - [x] exercises CRUD (list page still needs some love, but functional-wise it works)
-- [ ] still should somehow logout the user
+- [x] still should somehow logout the user
 - [ ] confirmation modal for delete items
-- [ ] better way to attach auth header
+- [x] better way to attach auth header
 - [ ] profile page
 - [ ] workouts CRUD
 - [ ] stats / analytics
