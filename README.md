@@ -1,11 +1,15 @@
 # gymbuddy-frontend
 
+## Roadmap
+
+[roadmap](/roadmap.md)
+
 > My good Nuxt.js project
-This is my Easter hackathon project, a gym tracker application. This is my first app in Nuxt.js. work in progress.
+> This is my Easter hackathon project, a gym tracker application. This is my first app in Nuxt.js. work in progress.
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm install
 

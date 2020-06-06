@@ -24,7 +24,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3em;
+  margin-bottom: 1em;
   border-bottom: 2px dashed gray;
 }
 </style>
